@@ -46,13 +46,13 @@ end
 
 
 
-get '/profile/:id' do
-   @user = User.find(params[:id])
+get '/profile' do
+
 erb :profile
  end
 
 
 get'/logout' do
-  session[:user_id] = null
+  session[:user_id] = nil
   redirect'/'
 end
