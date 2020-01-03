@@ -2,6 +2,7 @@ require 'sinatra/activerecord'
 require 'sinatra/flash'
 require 'sinatra'
 require './model'
+require './post_model'
 
 set :port, 3000
 set :database, {adapter: "sqlite3", database: "doggly2.sqlite3"}
@@ -52,6 +53,19 @@ erb :profile
  end
 get '/NewPost' do
   erb :submit
+end
+
+get '/NewPost' do
+  @Submission = Submission.new(params[:Submission])
+   if @Submission.save
+   session[:new_post] = Submission.image
+    redirect:'/profile'
+  else
+    flash[:error] = "Sorry! Your post failed to upload!"
+    redirect:'/submit'
+
+ end
+  p params
 end
 
 
