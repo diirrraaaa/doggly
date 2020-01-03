@@ -50,6 +50,9 @@ get '/profile' do
 
 erb :profile
  end
+get '/NewPost' do
+  erb :submit
+end
 
 
 get'/logout' do
